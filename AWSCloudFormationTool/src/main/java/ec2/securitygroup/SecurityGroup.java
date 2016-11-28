@@ -77,7 +77,7 @@ final class SecurityGroup extends Component {
 			throw new RuntimeErrorException(null, "VpcId can not be null");
 		}
 		
-		return super.toComponent();
+		return super.toString();
 	}
 	
 	private class Properties {

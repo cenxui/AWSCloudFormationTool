@@ -12,14 +12,14 @@ import resource.Tagable;
 public class Subnets extends Resource implements EC2, Tagable {
 	private final Subnet mSubnet;
 
-	private Subnets(Subnet component) {
-		super(component);
+	private Subnets(Subnet component, String resourceName) {
+		super(component, resourceName);
 		mSubnet = component;
 	}
 	
-	public static Subnets getSubnet() {
+	public static Subnets getSubnet(String resourceName) {
 		final Subnet subnet = new Subnet();
-		final Subnets subnets = new Subnets(subnet);
+		final Subnets subnets = new Subnets(subnet, resourceName);
 		return subnets;
 	}
 	

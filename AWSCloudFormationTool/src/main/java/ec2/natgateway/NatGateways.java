@@ -10,9 +10,15 @@ import resource.Resource;
 public class NatGateways extends Resource {
 	private final NatGateway mNatGateway;
 
-	public NatGateways(NatGateway component) {
-		super(component);
+	private NatGateways(NatGateway component, String resourceName) {
+		super(component, resourceName);
 		mNatGateway = component;
+	}
+	
+	public NatGateways getNatGatways(String resourceName) {
+		final NatGateway natGateway = new NatGateway();
+		final NatGateways natGateways = new NatGateways(natGateway, resourceName);
+		return natGateways;
 	}
 	
 	public void setSubnetId(String subnetId) {

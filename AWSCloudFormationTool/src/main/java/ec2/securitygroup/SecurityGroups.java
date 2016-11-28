@@ -15,8 +15,8 @@ import resource.Tagable;
 public class SecurityGroups extends Resource implements Tagable, EC2{
 	private final SecurityGroup mSecurityGroup;
 	
-	private SecurityGroups(SecurityGroup component) {
-		super(component);
+	private SecurityGroups(SecurityGroup component, String resourceName) {
+		super(component, resourceName);
 		mSecurityGroup = component;
 	}
 	
@@ -27,9 +27,9 @@ public class SecurityGroups extends Resource implements Tagable, EC2{
 	 * @return
 	 */
 	
-	public static SecurityGroups getSecurityGroups() {
+	public static SecurityGroups getSecurityGroups(String resourceName) {
 		final SecurityGroup securityGroup = new SecurityGroup();
-		final SecurityGroups securityGroups = new SecurityGroups(securityGroup);
+		final SecurityGroups securityGroups = new SecurityGroups(securityGroup, resourceName);
 		return securityGroups;		 
 	}
 	

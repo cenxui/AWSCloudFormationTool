@@ -3,9 +3,11 @@ package resource;
 import javax.management.RuntimeErrorException;
 
 public class Resource implements Componentable{
-	private String mResourceName;
+	private final String mResourceName;
 	private Componentable mComponentable;
-	public Resource(Componentable component) {
+	protected Resource(Componentable component, String resourceName) {
+		setResourceName(resourceName);
+		mResourceName = resourceName;
 		mComponentable = component;
 	}
 
@@ -16,15 +18,13 @@ public class Resource implements Componentable{
 		return mResourceName;
 	}
 
-	public void setResourceName(String resourceName) {
-		if (resourceName == null || resourceName.length() == 0) {
-			throw new RuntimeErrorException(null,"resourceName can not be empty");
-		}		
-		mResourceName = resourceName;
+	private void setResourceName(String resourceName) {
+		if (resourceName == null || resourceName.length() == 0) 
+			throw new RuntimeErrorException(null,"resourceName can not be empty");		
 	}
 
 	@Override
-	public String toComponent() {
-		return "{\"" + mResourceName + "\":" + mComponentable.toComponent() + "}";
+	public String toString() {
+		return  mResourceName + "\":" + mComponentable.toString();
 	}
 }

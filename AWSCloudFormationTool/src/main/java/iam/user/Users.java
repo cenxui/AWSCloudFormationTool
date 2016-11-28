@@ -6,9 +6,15 @@ import resource.Resource;
 
 public class Users extends Resource implements Groupable, PolicyArnable, Policiable {
 	private final User mUser;
-	public Users(User component) {
-		super(component);
+	private Users(User component, String resourceName) {
+		super(component, resourceName);
 		mUser = component;
+	}
+	
+	public static Users getUsers(String resourceName) {
+		final User user = new User();
+		final Users users = new Users(user, resourceName);
+		return users;
 	}
 	
 	public Groupable addGroup(String group) {

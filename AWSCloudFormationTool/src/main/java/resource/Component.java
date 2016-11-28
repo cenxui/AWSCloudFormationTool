@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 public class Component implements Componentable {
 
 	@Override
-	public String toComponent() {
+	public String toString() {
 		return new Gson().toJson(this);
 	}
 

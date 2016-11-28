@@ -34,7 +34,7 @@ class TopicPolicy extends Component {
 	}
 	
 	@Override
-	public String toComponent() {
+	public String toString() {
 		if (Properties.PolicyDocument == null) {
 			throw new RuntimeErrorException(null, "Policy document can not be null");
 		}
@@ -42,6 +42,6 @@ class TopicPolicy extends Component {
 		if (Properties.Topics == null) {
 			throw new RuntimeErrorException(null, "Topics can not be null");
 		}
-		return super.toComponent();
+		return super.toString();
 	}
 }

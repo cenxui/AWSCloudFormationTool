@@ -198,11 +198,11 @@ class Instance extends Component {
 	}
 
 	@Override
-	public String toComponent() {
+	public String toString() {
 		if (Properties.ImageId ==  null) {
 			throw new RuntimeErrorException(null, "ImageId can not be null");
 		}
-		return new Gson().toJson(this);
+		return super.toString();
 	}
 	
 }

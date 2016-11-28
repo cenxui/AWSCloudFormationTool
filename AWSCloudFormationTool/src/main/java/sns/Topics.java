@@ -10,8 +10,8 @@ import resource.Resource;
 public class Topics extends Resource implements Subscriptionable {
 	private final Topic mSns;
 
-	private Topics(Topic component) {
-		super(component);
+	private Topics(Topic component, String resourceName) {
+		super(component, resourceName);
 		mSns = component;
 	}
 	
@@ -20,9 +20,9 @@ public class Topics extends Resource implements Subscriptionable {
 	 * 
 	 * @return the SNSS instance
 	 */
-	public static Topics getTopic() {
+	public static Topics getTopic(String resourceName) {
 		Topic sns = new Topic();
-		Topics snss = new Topics(sns);
+		Topics snss = new Topics(sns, resourceName);
 		return snss;
 	}
 	

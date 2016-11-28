@@ -14,14 +14,14 @@ public class VPCS extends Resource implements Tagable {
 	
 	private final VPC mVPC; 
 
-	public VPCS(VPC component) {
-		super(component);
+	private VPCS(VPC component, String resourceName) {
+		super(component, resourceName);
 		mVPC = component;
 	}
 	
-	public static final VPCS getVPC() {
+	public static final VPCS getVPC(String resourceName) {
 		VPC vpc = new VPC();
-		VPCS vpcs = new VPCS(vpc);
+		VPCS vpcs = new VPCS(vpc, resourceName);
 		return vpcs;
 	}
 	
