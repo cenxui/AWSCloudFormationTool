@@ -21,7 +21,7 @@ final class SecurityGroup extends Component {
 	
 	public final String Type = "AWS::EC2::SecurityGroup";
 		
-	private Properties Properties = new Properties();
+	private final Properties Properties = new Properties();
 	
 	public void setVpcId(String id) {
 		if (Properties.VpcId != null) {
@@ -37,11 +37,11 @@ final class SecurityGroup extends Component {
 		Properties.VpcId = new Ref(rf);
 	}
 	
-	public final void setGroupDescription(String description) {
+	public void setGroupDescription(String description) {
 		Properties.GroupDescription = description;
 	}
 	
-	public final OutBoundRule setSecurityGroupEgress() {
+	public OutBoundRule setSecurityGroupEgress() {
 		if (Properties.SecurityGroupEgress == null) {
 			Properties.SecurityGroupEgress = new ArrayList<>();
 		}
@@ -51,7 +51,7 @@ final class SecurityGroup extends Component {
 		return OutBoundRule;
 	}
 	
-	public final InBoundRule setSecurityGroupIngress() {
+	public InBoundRule setSecurityGroupIngress() {
 		if (Properties.SecurityGroupIngress == null) {
 			Properties.SecurityGroupIngress = new ArrayList<>();
 		}
@@ -60,7 +60,7 @@ final class SecurityGroup extends Component {
 		return inBoundRule;
 	}
 	
-	public final SecurityGroup addTag(String tag) {
+	public SecurityGroup addTag(String tag) {
 		if (Properties.Tag == null) {
 			Properties.Tag = new ArrayList<>();
 		}
@@ -68,7 +68,7 @@ final class SecurityGroup extends Component {
 		return this;
 	}
 	
-	public final String toComponent() {
+	public String toComponent() {
 		if (Properties.GroupDescription == null) {
 			throw new RuntimeErrorException(null,"GroupDescription can not be null");
 		}

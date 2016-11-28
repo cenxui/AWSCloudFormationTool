@@ -5,4 +5,4 @@
  * @author xenxui
  *
  */
-package ec2.CustomerGateway;
+package ec2.customergateway;

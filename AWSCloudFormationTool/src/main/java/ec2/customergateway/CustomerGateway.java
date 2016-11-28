@@ -1,4 +1,4 @@
-package ec2.CustomerGateway;
+package ec2.customergateway;
 
 import resource.Component;
 
