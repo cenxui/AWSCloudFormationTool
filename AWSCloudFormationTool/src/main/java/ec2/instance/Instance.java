@@ -5,8 +5,6 @@ import java.util.List;
 
 import javax.management.RuntimeErrorException;
 
-import com.google.gson.Gson;
-
 import resource.Component;
 
 /**

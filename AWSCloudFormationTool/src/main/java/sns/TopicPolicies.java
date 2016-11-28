@@ -10,14 +10,14 @@ public class TopicPolicies extends Resource implements Topicable {
 
 	private final TopicPolicy mTopicPolicy;
 	
-	private TopicPolicies(TopicPolicy component, String resourceName) {
-		super(component, resourceName);
+	private TopicPolicies(TopicPolicy component) {
+		super(component);
 		mTopicPolicy = component;
 	}
 	
 	public static TopicPolicies geTopicPolicy(String resourceName) {
 		TopicPolicy topicPolicy = new TopicPolicy();
-		TopicPolicies topicPolicies = new TopicPolicies(topicPolicy, resourceName);
+		TopicPolicies topicPolicies = new TopicPolicies(topicPolicy);
 		return topicPolicies;
 	}
 	

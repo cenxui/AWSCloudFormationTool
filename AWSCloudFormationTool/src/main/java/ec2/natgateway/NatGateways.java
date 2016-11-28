@@ -10,14 +10,14 @@ import resource.Resource;
 public class NatGateways extends Resource {
 	private final NatGateway mNatGateway;
 
-	private NatGateways(NatGateway component, String resourceName) {
-		super(component, resourceName);
+	private NatGateways(NatGateway component) {
+		super(component);
 		mNatGateway = component;
 	}
 	
 	public NatGateways getNatGatways(String resourceName) {
 		final NatGateway natGateway = new NatGateway();
-		final NatGateways natGateways = new NatGateways(natGateway, resourceName);
+		final NatGateways natGateways = new NatGateways(natGateway);
 		return natGateways;
 	}
 	

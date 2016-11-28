@@ -12,11 +12,11 @@ import resource.Tagable;
  * 2016/7/20
  */
 
-public class SecurityGroups extends Resource implements Tagable, EC2{
+public class SecurityGroups extends Resource implements Tagable, EC2 { 
 	private final SecurityGroup mSecurityGroup;
 	
-	private SecurityGroups(SecurityGroup component, String resourceName) {
-		super(component, resourceName);
+	private SecurityGroups(SecurityGroup component) {
+		super(component);
 		mSecurityGroup = component;
 	}
 	
@@ -27,9 +27,9 @@ public class SecurityGroups extends Resource implements Tagable, EC2{
 	 * @return
 	 */
 	
-	public static SecurityGroups getSecurityGroups(String resourceName) {
+	public static SecurityGroups getSecurityGroups() {
 		final SecurityGroup securityGroup = new SecurityGroup();
-		final SecurityGroups securityGroups = new SecurityGroups(securityGroup, resourceName);
+		final SecurityGroups securityGroups = new SecurityGroups(securityGroup);
 		return securityGroups;		 
 	}
 	

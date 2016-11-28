@@ -13,14 +13,14 @@ public class Instances extends Resource implements Tagable, SsmAssociationable,
 	BlockDeviceMappingable {
 	
 	private final Instance mInstance;
-	private Instances(Instance component, String resourceName) {
-		super(component, resourceName);
+	private Instances(Instance component) {
+		super(component);
 		mInstance = component;
 	}
 	
 	public static Instances getInstances(String resourceName) {
 		final Instance instance = new Instance();
-		final Instances instances = new Instances(instance, resourceName);
+		final Instances instances = new Instances(instance);
 		return instances;
 	}
 	

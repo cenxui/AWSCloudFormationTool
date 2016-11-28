@@ -12,8 +12,8 @@ import resource.Resource;
 public class Roles extends Resource implements Policiable, PolicyArnable {
 	private final Role mRole;
 
-	private Roles(Role component, String resourceName) {
-		super(component, resourceName);
+	private Roles(Role component) {
+		super(component);
 		mRole = component;
 	}
 	
@@ -25,7 +25,7 @@ public class Roles extends Resource implements Policiable, PolicyArnable {
 	
 	public static Roles getRole(String resourceName) {
 		final Role role = new Role();
-		final Roles roles = new Roles(role, resourceName);
+		final Roles roles = new Roles(role);
 		return roles;
 	}
 	

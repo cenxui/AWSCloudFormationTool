@@ -11,14 +11,14 @@ import resource.Tagable;
 public class InternetGateways extends Resource implements Tagable {
 	private final InternetGateway mInternetGateway;
 
-	private InternetGateways(InternetGateway component, String resourceName) {
-		super(component, resourceName);
+	private InternetGateways(InternetGateway component) {
+		super(component);
 		mInternetGateway = component;
 	}
 	
 	public static InternetGateways getInternetGateway(String resourceName) {
 		InternetGateway internetGateway = new InternetGateway();
-		InternetGateways internetGateways = new InternetGateways(internetGateway, resourceName);
+		InternetGateways internetGateways = new InternetGateways(internetGateway);
 		return internetGateways;
 	}
 
