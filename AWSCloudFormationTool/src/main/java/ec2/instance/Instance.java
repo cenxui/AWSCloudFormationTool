@@ -196,11 +196,10 @@ class Instance extends Component {
 	}
 
 	@Override
-	public String toString() {
+	protected void validate() {
 		if (Properties.ImageId ==  null) {
 			throw new RuntimeErrorException(null, "ImageId can not be null");
-		}
-		return super.toString();
+		}	
 	}
 	
 }

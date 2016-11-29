@@ -5,6 +5,12 @@ import java.util.List;
 
 import resource.Component;
 
+/**
+ * 
+ * @author cenxui
+ * 2016/11/28
+ * 
+ */
 class Bucket extends Component {
 	
 	public final String Type = "AWS::S3::Bucket";
@@ -75,5 +81,13 @@ class Bucket extends Component {
 		}
 		Properties.Tags.add(tag);
 		return this;
+	}
+
+	@Override
+	protected void validate() {
+		if (Properties.BucketName == null) {
+			throw new RuntimeException("bucket name cannot be null, please set name.");
+		}
+		
 	}
 }

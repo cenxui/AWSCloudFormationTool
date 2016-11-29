@@ -7,7 +7,7 @@ import javax.management.RuntimeErrorException;
 import intrinsic.Ref;
 import resource.Component;
 
-final class Subnet extends Component{
+final class Subnet extends Component {
 	public final String Type = "AWS::EC2::Subnet";
 	
 	private final Properties Properties = new Properties();
@@ -55,5 +55,6 @@ final class Subnet extends Component{
 		}
 		Properties.Tags.add(tag);
 		return this;
-	}	
+	}
+
 }

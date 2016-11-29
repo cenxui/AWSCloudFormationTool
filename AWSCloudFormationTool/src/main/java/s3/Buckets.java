@@ -3,6 +3,11 @@ package s3;
 import resource.Resource;
 import resource.Tagable;
 
+/**
+ * 
+ * @author cenxui
+ * 2016/11/28
+ */
 public class Buckets extends Resource implements Tagable {
 	
 	private final Bucket mBucket;

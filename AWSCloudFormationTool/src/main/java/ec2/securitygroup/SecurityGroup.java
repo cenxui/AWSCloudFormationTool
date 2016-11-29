@@ -68,18 +68,6 @@ final class SecurityGroup extends Component {
 		return this;
 	}
 	
-	public String toComponent() {
-		if (Properties.GroupDescription == null) {
-			throw new RuntimeErrorException(null,"GroupDescription can not be null");
-		}
-		
-		if (Properties.VpcId == null) {
-			throw new RuntimeErrorException(null, "VpcId can not be null");
-		}
-		
-		return super.toString();
-	}
-	
 	private class Properties {
 		String GroupDescription;
 		Object VpcId;
@@ -263,4 +251,16 @@ final class SecurityGroup extends Component {
 			}
 		}
 	}
+
+	@Override
+	protected void validate() {
+		if (Properties.GroupDescription == null) {
+			throw new RuntimeErrorException(null,"GroupDescription can not be null");
+		}
+		
+		if (Properties.VpcId == null) {
+			throw new RuntimeErrorException(null, "VpcId can not be null");
+		}
+	}
+	
 }

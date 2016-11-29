@@ -10,7 +10,7 @@ public class Template {
 	@SuppressWarnings("unused")
 	private String  AWSTemplateFormatVersion =  "2010-09-09";
 	
-	private Map<String, Componentable> Resources = new HashMap<>();  
+	private Map<String, Component> Resources = new HashMap<>();  
 	
 	private Template() {
 		
@@ -29,7 +29,7 @@ public class Template {
 			throw new RuntimeException("each resource name must unique");
 		}
 		
-		Resources.put(name, resource.mComponentable);
+		Resources.put(name, resource.mComponent);
 	}
 	
 	@Override

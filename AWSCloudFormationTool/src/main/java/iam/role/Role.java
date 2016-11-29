@@ -55,10 +55,10 @@ final class Role extends Component {
 	}
 	
 	@Override
-	public String toString() {
+	protected void validate() {
 		if (Properties.AssumeRolePolicyDocument == null) {
 			throw new RuntimeErrorException(null, "AssumeRolePolicyDocument can not be null");
 		}
-		return super.toString();
+		
 	}
 }
