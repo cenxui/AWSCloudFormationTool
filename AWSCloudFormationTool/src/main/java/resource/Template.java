@@ -10,9 +10,6 @@ public class Template {
 	@SuppressWarnings("unused")
 	private String  AWSTemplateFormatVersion =  "2010-09-09";
 	
-	@SuppressWarnings("unused")
-	private String Metadata = "{\"AWS::CloudFormation::Designer\":{}}";
-	
 	private Map<String, Componentable> Resources = new HashMap<>();  
 	
 	private Template() {
