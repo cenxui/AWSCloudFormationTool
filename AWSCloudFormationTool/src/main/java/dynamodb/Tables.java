@@ -53,7 +53,7 @@ public class Tables extends Resource implements AttributeDefine, GSIndex, LSInde
 		mTable.setWriteCapacityUnits(writeCapacityUnits);
 	}
 
-	public void setStreamSpecification(int streamSpecification) {
+	public void setStreamSpecification(String streamSpecification) {
 		mTable.setStreamSpecification(streamSpecification);
 	}
 

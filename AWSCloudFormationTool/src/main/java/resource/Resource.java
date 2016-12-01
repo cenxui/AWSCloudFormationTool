@@ -1,5 +1,7 @@
 package resource;
 
+import java.util.Map;
+
 /**
  * This method is used as a delegate for component.
  * 
@@ -11,6 +13,10 @@ public class Resource {
 	
 	protected Resource(Component component) {
 		mComponent = component;
+	}
+	
+	protected Map<String, Object> getOutput() {
+		return null;
 	}
 
 	@Override

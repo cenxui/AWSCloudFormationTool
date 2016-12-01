@@ -1,5 +1,6 @@
 package ec2.instance;
 
+import ec2.securitygroup.SecurityGroups;
 import resource.Resource;
 import resource.Tagable;
 
@@ -94,13 +95,15 @@ public class Instances extends Resource implements Tagable, SsmAssociationable,
 		mInstance.setRamdiskId(ramdiskId);
 	}
 
+	@Override
 	public SecurityGroupIdable addSecurityGroupId(String securityGroupId) {
 		mInstance.addSecurityGroupId(securityGroupId);
 		return this;
 	}
 
-	public SecurityGroupable addSecurityGroup(String securityGroup) {
-		mInstance.addSecurityGroup(securityGroup);
+	@Override
+	public SecurityGroupable addSecurityGroup(SecurityGroups securityGroups) {
+		mInstance.addSecurityGroup(securityGroups.toString());
 		return this;
 	}
 

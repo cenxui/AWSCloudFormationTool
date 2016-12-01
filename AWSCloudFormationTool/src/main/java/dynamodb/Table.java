@@ -18,11 +18,11 @@ class Table extends Component {
 	private class Properties {
 		private List<Attribute> AttributeDefinitions;
 		private List<String> GlobalSecondaryIndexes;
-		private KeySchema[] KeySchemas = new KeySchema[2];
+		private KeySchema[] KeySchema;
 		private List<String> LocalSecondaryIndexes;
 		private final ProvisionedThroughput ProvisionedThroughput =  new ProvisionedThroughput();;
 		@SuppressWarnings("unused")
-		private int StreamSpecification;
+		private String StreamSpecification;
 		@SuppressWarnings("unused")
 		private String TableName;
 
@@ -55,24 +55,28 @@ class Table extends Component {
 	}
 
 	public Table setHashKey(String attribute) {
-		if (Properties.KeySchemas[0] != null) {
+		if (Properties.KeySchema != null) {
 			throw new RuntimeException("Hash key has already set up");
 		}
 		KeySchema keySchema = new KeySchema();
 		keySchema.AttributeName = attribute;
 		keySchema.KeyType = "HASH";
-		Properties.KeySchemas[0] = keySchema;
+		Properties.KeySchema = new KeySchema[1];
+		Properties.KeySchema[0] = keySchema;
 		return this;
 	}
 	
 	public Table setRangeKey(String attribute) {
-		if (Properties.KeySchemas[1] != null) {
-			throw new RuntimeException("Range key has already set up");
+		if (Properties.KeySchema == null) {
+			throw new RuntimeException("Please set hash key before setting range key");
 		}
-		KeySchema keySchema = new KeySchema();
-		keySchema.AttributeName = attribute;
-		keySchema.KeyType = "RANGE";
-		Properties.KeySchemas[1] = keySchema;
+		KeySchema range = new KeySchema();
+		range.AttributeName = attribute;
+		range.KeyType = "RANGE";
+		KeySchema hash =  Properties.KeySchema[0];
+		Properties.KeySchema = new KeySchema[2];
+		Properties.KeySchema[0] = hash;
+		Properties.KeySchema[1] = range;
 		return this;
 	}
 
@@ -97,7 +101,7 @@ class Table extends Component {
 		Properties.ProvisionedThroughput.WriteCapacityUnits = writeCapacityUnits;
 	}
 
-	public void setStreamSpecification(int streamSpecification) {
+	public void setStreamSpecification(String streamSpecification) {
 		Properties.StreamSpecification = streamSpecification;
 	}
 
@@ -110,7 +114,7 @@ class Table extends Component {
 		if (Properties.AttributeDefinitions == null || Properties.AttributeDefinitions.size() == 0) {
 			throw new RuntimeException("AttributeDefinitions cannot be null, please add at least one attribute");
 		}
-		if (Properties.KeySchemas[0] == null) {
+		if (Properties.KeySchema[0] == null) {
 			throw new RuntimeException("KeySchema can not be null, please set hash key");
 		}
 		if (Properties.ProvisionedThroughput.ReadCapacityUnits == 0) {

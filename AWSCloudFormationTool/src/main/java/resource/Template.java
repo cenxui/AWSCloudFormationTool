@@ -1,16 +1,23 @@
 package resource;
 
-import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 import com.google.gson.Gson;
 
+/**
+ * 
+ * @author cenxui
+ * 2016/12/1
+ */
 
 public class Template {
 	@SuppressWarnings("unused")
 	private String  AWSTemplateFormatVersion =  "2010-09-09";
 	
-	private Map<String, Component> Resources = new HashMap<>();  
+	private Map<String, Component> Resources = new TreeMap<>();
+	
+	private Map<String, Object> Outputs = new TreeMap<>();
 	
 	private Template() {
 		
@@ -30,10 +37,21 @@ public class Template {
 		}
 		
 		Resources.put(name, resource.mComponent);
+		
+		Map<String, Object> output = resource.getOutput();
+		
+		if (output != null && output.isEmpty() == false) {
+			Outputs.putAll(output);
+		}
+
 	}
 	
 	@Override
 	public String toString() {
+		if (Outputs.isEmpty()) {
+			Outputs = null;
+		}
 		return new Gson().toJson(this) ;
 	}
+	
 }
